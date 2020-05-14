@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/{any}', function (){
     return view('layouts.master');
 })->where('any', '.*');
+
+
+Route::post('oauth/token', [
+    'middleware' => 'password-grant',
+    'uses' => '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken'
+]);

@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
             'hash' => false,
         ],
@@ -114,4 +114,5 @@ return [
 
     'password_timeout' => 10800,
 
+    'password_grant_client_id' => env('PASSWORD_GRANT_CLIENT_ID', 2)
 ];

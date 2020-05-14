@@ -18,32 +18,17 @@
                           body-classes="px-lg-5 py-lg-5"
                           class="border-0">
                         <template>
-                            <div class="text-muted text-center mb-3">
-                                <small>Sign in with</small>
-                            </div>
-                            <div class="btn-wrapper text-center">
-                                <base-button type="neutral">
-                                    <img slot="icon" src="img/icons/common/github.svg">
-                                    Github
-                                </base-button>
-
-                                <base-button type="neutral">
-                                    <img slot="icon" src="img/icons/common/google.svg">
-                                    Google
-                                </base-button>
-                            </div>
-                        </template>
-                        <template>
-                            <div class="text-center text-muted mb-4">
-                                <small>Or sign in with credentials</small>
-                            </div>
                             <form role="form">
-                                <base-input alternative
+                                <base-input
+                                            v-model="authData.username"
+                                            alternative
                                             class="mb-3"
                                             placeholder="Email"
                                             addon-left-icon="ni ni-email-83">
                                 </base-input>
-                                <base-input alternative
+                                <base-input 
+                                            v-model="authData.password"                          
+                                            alternative
                                             type="password"
                                             placeholder="Password"
                                             addon-left-icon="ni ni-lock-circle-open">
@@ -52,30 +37,91 @@
                                     Remember me
                                 </base-checkbox>
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4">Sign In</base-button>
+                                    <base-button @click.prevent="handleLogin" type="primary" class="my-4">Sign In</base-button>
                                 </div>
                             </form>
                         </template>
                     </card>
-                    <div class="row mt-3">
-                        <div class="col-6">
-                            <a href="#" class="text-light">
-                                <small>Forgot password?</small>
-                            </a>
-                        </div>
-                        <div class="col-6 text-right">
-                            <a href="#" class="text-light">
-                                <small>Create new account</small>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
+        <div class="shape shape-style-1 bg-gradient-default">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </section>
 </template>
+
 <script>
-export default {};
+
+export default {
+    components: {},
+    /*
+        |--------------------------------------------------------------------------
+        | Component > props
+        |--------------------------------------------------------------------------
+        */
+    props: {
+        item: {}
+    }, // End of Component > props
+    /*
+        |--------------------------------------------------------------------------
+        | Component > data
+        |--------------------------------------------------------------------------
+        */
+    data() {
+        return {
+            authData: {
+                username : '',
+                password: '',
+                grant_type: 'password'
+            }
+        };
+    }, // End of Component > data
+    /*
+        |--------------------------------------------------------------------------
+        | Component > computed
+        |--------------------------------------------------------------------------
+        */
+    computed: {}, // End of Component > computed
+    /*
+        |--------------------------------------------------------------------------
+        | Component > methods
+        |--------------------------------------------------------------------------
+        */
+    methods: {
+        handleLogin() {
+            this.loading = true;
+            this.$store
+                .dispatch("user/login", this.authData)
+                .then(() => {       
+
+                    this.$router.push({ path: "/customer/market" });
+                    this.loading = false;
+
+                })
+                .catch(() => {
+                    console.log(138884884)
+                    this.loading = false;
+                });
+        }        
+    }, // End of Component > methods
+    /*
+        |--------------------------------------------------------------------------
+        | Component > mounted
+        |--------------------------------------------------------------------------
+        */
+    mounted() {} // End of Component > mounted
+}; // End of export default
 </script>
+
+
+
 <style>
 </style>

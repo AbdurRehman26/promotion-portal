@@ -20,6 +20,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "kazmi/laravel-abstract-resource": "dev-master",
         "laravel/framework": "^7.0",
+        "laravel/passport": "^9.2",
         "laravel/tinker": "^2.0",
         "oscarafdev/migrations-generator": "2.0.19"
     },
