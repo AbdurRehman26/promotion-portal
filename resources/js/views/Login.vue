@@ -102,12 +102,11 @@ export default {
                 .dispatch("user/login", this.authData)
                 .then(() => {       
 
-                    this.$router.push({ path: "/customer/market" });
+                    this.$router.push({ path: "/dashboard" });
                     this.loading = false;
 
                 })
                 .catch(() => {
-                    console.log(138884884)
                     this.loading = false;
                 });
         }        

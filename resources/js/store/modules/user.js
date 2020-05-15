@@ -46,8 +46,9 @@ const actions = {
     return new Promise((resolve, reject) => {
       login(userInfo)
         .then(response => {
-          commit('SET_TOKEN', response.token);
-          setToken(response.token);
+          console.log(response)
+          commit('SET_TOKEN', response.access_token);
+          setToken(response.access_token);
           resolve();
         })
         .catch(error => {
@@ -63,8 +64,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ email: email.trim(), password: password })
         .then(response => {
-          commit('SET_TOKEN', response.token);
-          setToken(response.token);
+          commit('SET_TOKEN', response.access_token);
+          setToken(response.access_token);
           resolve();
         })
         .catch(error => {
