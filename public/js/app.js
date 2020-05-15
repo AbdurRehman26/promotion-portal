@@ -2035,7 +2035,15 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue2_transitions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-transitions */ "./node_modules/vue2-transitions/dist/vue2-transitions.m.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue2_transitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-transitions */ "./node_modules/vue2-transitions/dist/vue2-transitions.m.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2050,7 +2058,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    FadeTransition: vue2_transitions__WEBPACK_IMPORTED_MODULE_0__["FadeTransition"]
+    FadeTransition: vue2_transitions__WEBPACK_IMPORTED_MODULE_1__["FadeTransition"]
+  },
+  mounted: function mounted() {
+    this.getUser();
+  },
+  methods: {
+    getUser: function () {
+      var _getUser = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.$store.dispatch("user/getInfo").then(function () {});
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getUser() {
+        return _getUser.apply(this, arguments);
+      }
+
+      return getUser;
+    }()
   }
 });
 
@@ -3996,34 +4031,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'sidebar',
@@ -4699,9 +4706,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DashboardNavbar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardNavbar.vue */ "./resources/js/layout/DashboardNavbar.vue");
 /* harmony import */ var _ContentFooter_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ContentFooter.vue */ "./resources/js/layout/ContentFooter.vue");
 /* harmony import */ var vue2_transitions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue2-transitions */ "./node_modules/vue2-transitions/dist/vue2-transitions.m.js");
-//
-//
-//
 //
 //
 //
@@ -71816,17 +71820,6 @@ var render = function() {
             [_c("span", { staticClass: "navbar-toggler-icon" })]
           ),
           _vm._v(" "),
-          _c(
-            "router-link",
-            { staticClass: "navbar-brand", attrs: { to: "/" } },
-            [
-              _c("img", {
-                staticClass: "navbar-brand-img",
-                attrs: { src: _vm.logo, alt: "..." }
-              })
-            ]
-          ),
-          _vm._v(" "),
           _vm._t("mobile-right", [
             _c(
               "ul",
@@ -72028,15 +72021,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("ul", { staticClass: "navbar-nav" }, [_vm._t("links")], 2),
-              _vm._v(" "),
-              _c("hr", { staticClass: "my-3" }),
-              _vm._v(" "),
-              _c("h6", { staticClass: "navbar-heading text-muted" }, [
-                _vm._v("Documentation")
-              ]),
-              _vm._v(" "),
-              _vm._m(0)
+              _c("ul", { staticClass: "navbar-nav" }, [_vm._t("links")], 2)
             ]
           )
         ],
@@ -72045,65 +72030,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "navbar-nav mb-md-3" }, [
-      _c("li", { staticClass: "nav-item" }, [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: {
-              href:
-                "https://demos.creative-tim.com/vue-argon-dashboard/documentation"
-            }
-          },
-          [
-            _c("i", { staticClass: "ni ni-spaceship" }),
-            _vm._v(" Getting started\n                    ")
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "nav-item" }, [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: {
-              href:
-                "https://demos.creative-tim.com/vue-argon-dashboard/documentation/foundation/colors.html"
-            }
-          },
-          [
-            _c("i", { staticClass: "ni ni-palette" }),
-            _vm._v(" Foundation\n                    ")
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "nav-item" }, [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: {
-              href:
-                "https://demos.creative-tim.com/vue-argon-dashboard/documentation/components/alerts.html"
-            }
-          },
-          [
-            _c("i", { staticClass: "ni ni-ui-04" }),
-            _vm._v(" Components\n                    ")
-          ]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -73058,26 +72985,6 @@ var render = function() {
               _c("sidebar-item", {
                 attrs: {
                   link: {
-                    name: "Icons",
-                    icon: "ni ni-planet text-blue",
-                    path: "/icons"
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("sidebar-item", {
-                attrs: {
-                  link: {
-                    name: "Maps",
-                    icon: "ni ni-pin-3 text-orange",
-                    path: "/maps"
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("sidebar-item", {
-                attrs: {
-                  link: {
                     name: "User Profile",
                     icon: "ni ni-single-02 text-yellow",
                     path: "/profile"
@@ -73101,16 +73008,6 @@ var render = function() {
                     name: "Login",
                     icon: "ni ni-key-25 text-info",
                     path: "/login"
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("sidebar-item", {
-                attrs: {
-                  link: {
-                    name: "Register",
-                    icon: "ni ni-circle-08 text-pink",
-                    path: "/register"
                   }
                 }
               })
@@ -97015,7 +96912,7 @@ function signUp(data) {
 }
 function getInfo(token) {
   return Object(_utils_request__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    url: '/auth/user',
+    url: '/api/user',
     method: 'get'
   });
 }
@@ -100516,17 +100413,17 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
   linkExactActiveClass: "active",
   routes: [{
     path: "/",
-    name: "components",
-    components: {
-      header: _layout_AppHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
-      default: _views_Components_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-      footer: _layout_AppFooter__WEBPACK_IMPORTED_MODULE_3__["default"]
-    }
-  }, {
-    path: "/",
     redirect: "dashboard",
     component: _layout_DashboardLayout__WEBPACK_IMPORTED_MODULE_10__["default"],
     children: [{
+      path: "/",
+      name: "components",
+      components: {
+        header: _layout_AppHeader__WEBPACK_IMPORTED_MODULE_2__["default"],
+        default: _views_Dashboard_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
+        footer: _layout_AppFooter__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }
+    }, {
       path: "/dashboard",
       name: "components",
       components: {
@@ -100837,30 +100734,8 @@ var actions = {
         state = _ref3.state;
     return new Promise(function (resolve, reject) {
       Object(_api_auth__WEBPACK_IMPORTED_MODULE_1__["getInfo"])(state.token).then(function (response) {
-        var data = response.data;
-
-        if (!data) {
-          reject('Verification failed, please Login again.');
-        } // Changed to an empty roles variable
-
-
-        var roles = [];
-        var name = data.name,
-            avatar = data.avatar,
-            introduction = data.introduction,
-            id = data.id; // roles must be a non-empty array
-
-        if (!roles || roles.length <= 0) {// reject('getInfo: roles must be a non-null array!');
-        }
-
-        roles = ['admin'];
-        commit('SET_ROLES', roles); // commit('SET_PERMISSIONS', permissions);
-
-        commit('SET_NAME', name);
-        commit('SET_AVATAR', avatar);
-        commit('SET_INTRODUCTION', introduction);
-        commit('SET_ID', id);
-        resolve(data);
+        commit('SET_USER', response);
+        resolve(response);
       }).catch(function (error) {
         reject(error);
       });

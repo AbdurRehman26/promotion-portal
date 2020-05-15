@@ -18,19 +18,19 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "components",
-      components: {
-        header: AppHeader,
-        default: Components,
-        footer: AppFooter,
-      },
-    },
-
-    {
-      path: "/",
       redirect: "dashboard",
       component: DashboardLayout,
       children: [
+        {
+          path: "/",
+          name: "components",
+          components: {
+            header: AppHeader,
+            default: Dashboard,
+            footer: AppFooter,
+          },
+        },
+
         {
           path: "/dashboard",
           name: "components",
