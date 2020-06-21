@@ -10,17 +10,6 @@
             <slot name="mobile-right">
                 <ul class="nav align-items-center d-md-none">
                     <base-dropdown class="nav-item" position="right">
-                        <a slot="title" class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="ni ni-bell-55"></i>
-                        </a>
-
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </base-dropdown>
-                    <base-dropdown class="nav-item" position="right">
                         <a slot="title" class="nav-link" href="#" role="button">
                             <div class="media align-items-center">
                               <span class="avatar avatar-sm rounded-circle">
@@ -65,9 +54,6 @@
                             <router-link to="/">
                                 <img :src="logo">
                             </router-link>
-                        </div>
-                        <div class="col-6 collapse-close">
-                            <navbar-toggle-button @click.native="closeSidebar"></navbar-toggle-button>
                         </div>
                     </div>
                 </div>

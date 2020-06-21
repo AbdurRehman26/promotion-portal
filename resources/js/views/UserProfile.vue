@@ -1,19 +1,9 @@
 <template>
     <div>
         <base-header class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-                     style="min-height: 600px; background-image: url(img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+                     style="min-height: 200px; background-image: url(img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
             <!-- Mask -->
-            <span class="mask bg-gradient-success opacity-8"></span>
             <!-- Header container -->
-            <div class="container-fluid d-flex align-items-center">
-                <div class="row">
-                    <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white">Hello Jesse</h1>
-                        <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-                        <a href="#!" class="btn btn-info">Edit profile</a>
-                    </div>
-                </div>
-            </div>
         </base-header>
 
         <div class="container-fluid mt--7">
@@ -28,12 +18,6 @@
                                         <img src="img/theme/team-4-800x800.jpg" class="rounded-circle">
                                     </a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                            <div class="d-flex justify-content-between">
-                                <base-button size="sm" type="info" class="mr-4">Connect</base-button>
-                                <base-button size="sm" type="default" class="float-right">Message</base-button>
                             </div>
                         </div>
                         <div class="card-body pt-0 pt-md-4">
@@ -68,9 +52,6 @@
                                 <div>
                                     <i class="ni education_hat mr-2"></i>University of Computer Science
                                 </div>
-                                <hr class="my-4" />
-                                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-                                <a href="#">Show more</a>
                             </div>
                         </div>
                     </div>
@@ -82,9 +63,6 @@
                             <div class="row align-items-center">
                                 <div class="col-8">
                                     <h3 class="mb-0">My account</h3>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <a href="#!" class="btn btn-sm btn-primary">Settings</a>
                                 </div>
                             </div>
                         </div>
@@ -129,58 +107,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="my-4" />
-                                <!-- Address -->
-                                <h6 class="heading-small text-muted mb-4">Contact information</h6>
-                                <div class="pl-lg-4">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <base-input alternative=""
-                                                        label="Address"
-                                                        placeholder="Home Address"
-                                                        input-classes="form-control-alternative"
-                                                        v-model="model.address"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <base-input alternative=""
-                                                        label="City"
-                                                        placeholder="City"
-                                                        input-classes="form-control-alternative"
-                                                        v-model="model.city"
-                                            />
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <base-input alternative=""
-                                                        label="Country"
-                                                        placeholder="Country"
-                                                        input-classes="form-control-alternative"
-                                                        v-model="model.country"
-                                            />
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <base-input alternative=""
-                                                        label="Postal code"
-                                                        placeholder="Postal code"
-                                                        input-classes="form-control-alternative"
-                                                        v-model="model.zipCode"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="my-4" />
-                                <!-- Description -->
-                                <h6 class="heading-small text-muted mb-4">About me</h6>
-                                <div class="pl-lg-4">
-                                    <div class="form-group">
-                                        <base-input alternative=""
-                                                    label="About Me">
-                                            <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-                                        </base-input>
-                                    </div>
-                                </div>
+                                
                             </form>
                         </template>
                     </card>

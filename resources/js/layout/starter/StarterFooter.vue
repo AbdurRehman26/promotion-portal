@@ -50,12 +50,6 @@
             <hr>
             <div class="row align-items-center justify-content-md-between">
                 <div class="col-md-6">
-                    <div class="copyright">
-                        &copy; {{year}}
-                        <a href="https://www.creative-tim.com" target="_blank" rel="noopener">Creative Tim</a> & <a href="https://www.binarcode.com" target="_blank" rel="noopener">Binar Code</a>
-                    </div>
-                </div>
-                <div class="col-md-6">
                     <ul class="nav nav-footer justify-content-end">
                         <li class="nav-item">
                             <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>

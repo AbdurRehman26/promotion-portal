@@ -2,10 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
-import Components from "./views/Components.vue";
-import Landing from "./views/Landing.vue";
 import Login from "./views/Login.vue";
-import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
 import Dashboard from "./views/Dashboard.vue";
 import DashboardLayout from "@/layout/DashboardLayout";
@@ -18,28 +15,16 @@ export default new Router({
   routes: [
     {
       path: "/",
-      redirect: "dashboard",
+      redirect: "profile",
       component: DashboardLayout,
       children: [
         {
           path: "/",
           name: "components",
-          components: {
-            header: AppHeader,
-            default: Dashboard,
-            footer: AppFooter,
-          },
+          component: ()=>
+              import(/* webpackChunkName: "demo" */ "./views/UserProfile.vue"),
         },
 
-        {
-          path: "/dashboard",
-          name: "components",
-          components: {
-            header: AppHeader,
-            default: Dashboard,
-            footer: AppFooter,
-          },
-        },
         {
           path: "/profile",
           name: "profile",
@@ -47,52 +32,19 @@ export default new Router({
             import(/* webpackChunkName: "demo" */ "./views/UserProfile.vue"),
         },
         {
-          path: "/maps",
-          name: "maps",
+          path: "/posts",
+          name: "posts",
           component: () =>
-            import(/* webpackChunkName: "demo" */ "./views/Maps.vue"),
-        },
-        {
-          path: "/tables",
-          name: "tables",
-          component: () =>
-            import(/* webpackChunkName: "demo" */ "./views/Tables.vue"),
+            import(/* webpackChunkName: "demo" */ "./views/Posts.vue"),
         },
       ],
     },
 
     {
-      path: "/landing",
-      name: "landing",
-      components: {
-        header: AppHeader,
-        default: Landing,
-        footer: AppFooter,
-      },
-    },
-    {
       path: "/login",
       name: "login",
       components: {
         default: Login,
-        footer: AppFooter,
-      },
-    },
-    {
-      path: "/register",
-      name: "register",
-      components: {
-        header: AppHeader,
-        default: Register,
-        footer: AppFooter,
-      },
-    },
-    {
-      path: "/profile",
-      name: "profile",
-      components: {
-        header: AppHeader,
-        default: Profile,
         footer: AppFooter,
       },
     },
