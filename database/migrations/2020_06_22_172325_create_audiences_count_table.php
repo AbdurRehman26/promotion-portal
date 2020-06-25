@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSitesTable extends Migration {
+class CreateAudiencesCountTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateSitesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sites', function(Blueprint $table)
+		Schema::create('audiences_count', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('code');
-			$table->string('name')->nullable();
+			$table->string('max', 45)->nullable();
+			$table->string('min', 45)->nullable();
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateSitesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('sites');
+		Schema::drop('audiences_count');
 	}
 
 }
