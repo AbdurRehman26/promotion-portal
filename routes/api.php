@@ -41,3 +41,6 @@ Route::resource('audience-count', 'Api\V1\AudienceCountController')->except([
 
 Route::post('file/upload', 'Api\V1\FileUploadController@upload')->name("file.upload");
 Route::post('file/remove', 'Api\V1\FileUploadController@remove')->name("file.remove");
+
+Route::post('user', 'Api\V1\UserController@store');
+Route::post('user/logout', 'Api\V1\UserController@logout');

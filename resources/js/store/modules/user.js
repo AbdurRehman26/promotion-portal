@@ -46,10 +46,10 @@ const actions = {
     return new Promise((resolve, reject) => {
       login(userInfo)
         .then(response => {
-          console.log(response)
-          commit('SET_TOKEN', response.access_token);
-          setToken(response.access_token);
-          resolve();
+          commit('SET_TOKEN', response.data.token);
+          setToken(response.data.token);
+          resolve(response);
+          location.href = "/";
         })
         .catch(error => {
           console.log(error, 1312321)

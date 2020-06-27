@@ -9,6 +9,7 @@ import ArgonDashboard from './plugins/argon-dashboard'
 import store from './store';
 import FBSignInButton from 'vue-facebook-signin-button'
 
+require('./route-middleware');
 
 
 Vue.use(FBSignInButton)

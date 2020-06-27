@@ -1070,7 +1070,7 @@ var render = function() {
               { staticClass: "col" },
               [
                 _c("posts-table", {
-                  attrs: { title: "Light Table" },
+                  attrs: { title: "Submitted Posts" },
                   on: { "show-modal": _vm.showModal }
                 })
               ],

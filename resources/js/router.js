@@ -17,6 +17,9 @@ export default new Router({
       path: "/",
       redirect: "profile",
       component: DashboardLayout,
+      meta: {
+        forAuth: true
+      },
       children: [
         {
           path: "/",
@@ -43,6 +46,9 @@ export default new Router({
     {
       path: "/login",
       name: "login",
+      meta: {
+        forVisitors: true
+      },
       components: {
         default: Login,
         footer: AppFooter,

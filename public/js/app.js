@@ -5200,6 +5200,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/api/auth */ "./resources/js/api/auth.js");
 //
 //
 //
@@ -5254,6 +5255,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.initializeFacebook();
@@ -5261,16 +5263,27 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       fbSignInParams: {
-        scope: "email,user_likes",
+        scope: "email",
         return_scopes: true
       }
     };
   },
   methods: {
+    handleLogin: function handleLogin(userData) {
+      var _this = this;
+
+      this.$store.dispatch("user/login", userData).then(function () {
+        //this.$router.push({ path: "/customer/market" });
+        _this.loading = false;
+      }).catch(function () {
+        console.log(138884884);
+        _this.loading = false;
+      });
+    },
     initializeFacebook: function initializeFacebook() {
       window.fbAsyncInit = function () {
         FB.init({
-          appId: "184296489616392",
+          appId: "918948031861716",
           cookie: true,
           xfbml: true,
           version: "v2.8"
@@ -5293,10 +5306,14 @@ __webpack_require__.r(__webpack_exports__);
       })(document, "script", "facebook-jssdk");
     },
     onSignInSuccess: function onSignInSuccess(response) {
-      console.log(response);
-      FB.api("/me", function (dude) {
-        console.log(dude);
-        console.log("Good to see you, ".concat(dude.name, "."));
+      var self = this;
+      var userData = response;
+      FB.api("/me?fields=name,email,gender,picture", function (dude) {
+        userData.first_name = dude.name;
+        userData.email = dude.email;
+        userData.provider_access_token = userData.authResponse.accessToken;
+        userData.provider_id = dude.id;
+        self.handleLogin(userData);
       });
     },
     onSignInError: function onSignInError(error) {
@@ -85150,7 +85167,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function login(data) {
   return Object(_utils_request__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    url: '/oauth/token',
+    url: '/api/user',
     method: 'post',
     data: data
   });
@@ -85203,6 +85220,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
+
+__webpack_require__(/*! ./route-middleware */ "./resources/js/route-middleware.js");
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_facebook_signin_button__WEBPACK_IMPORTED_MODULE_6___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
@@ -88631,6 +88651,44 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/route-middleware.js":
+/*!******************************************!*\
+  !*** ./resources/js/route-middleware.js ***!
+  \******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/utils/auth */ "./resources/js/utils/auth.js");
+
+
+_router__WEBPACK_IMPORTED_MODULE_0__["default"].beforeEach(function (to, from, next) {
+  if (to.matched.some(function (record) {
+    return record.meta.forVisitors;
+  })) {
+    if (Object(_utils_auth__WEBPACK_IMPORTED_MODULE_1__["getToken"])()) {
+      next({
+        path: "/"
+      });
+    } else next();
+  } else if (to.matched.some(function (record) {
+    return record.meta.forAuth;
+  })) {
+    if (!Object(_utils_auth__WEBPACK_IMPORTED_MODULE_1__["getToken"])()) {
+      next({
+        path: "/"
+      });
+    } else next();
+  } else {
+    next();
+  }
+});
+_router__WEBPACK_IMPORTED_MODULE_0__["default"].afterEach(function (to, from) {});
+
+/***/ }),
+
 /***/ "./resources/js/router.js":
 /*!********************************!*\
   !*** ./resources/js/router.js ***!
@@ -88665,6 +88723,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: "/",
     redirect: "profile",
     component: _layout_DashboardLayout__WEBPACK_IMPORTED_MODULE_7__["default"],
+    meta: {
+      forAuth: true
+    },
     children: [{
       path: "/",
       name: "components",
@@ -88687,6 +88748,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
   }, {
     path: "/login",
     name: "login",
+    meta: {
+      forVisitors: true
+    },
     components: {
       default: _views_Login_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
       footer: _layout_AppFooter__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -88909,10 +88973,10 @@ var actions = {
     var commit = _ref.commit;
     return new Promise(function (resolve, reject) {
       Object(_api_auth__WEBPACK_IMPORTED_MODULE_1__["login"])(userInfo).then(function (response) {
-        console.log(response);
-        commit('SET_TOKEN', response.access_token);
-        Object(_utils_auth__WEBPACK_IMPORTED_MODULE_2__["setToken"])(response.access_token);
-        resolve();
+        commit('SET_TOKEN', response.data.token);
+        Object(_utils_auth__WEBPACK_IMPORTED_MODULE_2__["setToken"])(response.data.token);
+        resolve(response);
+        location.href = "/";
       }).catch(function (error) {
         console.log(error, 1312321);
         reject(error);

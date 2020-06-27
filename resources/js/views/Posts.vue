@@ -7,7 +7,7 @@
         <div class="col">
           <posts-table
             @show-modal="showModal"
-            title="Light Table"
+            title="Submitted Posts"
           ></posts-table>
         </div>
       </div>

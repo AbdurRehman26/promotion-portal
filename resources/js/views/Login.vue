@@ -53,6 +53,9 @@
 </template>
 
 <script>
+
+import { login, logout, getInfo } from "@/api/auth";
+
 export default {
     mounted() {
         this.initializeFacebook();
@@ -60,16 +63,31 @@ export default {
     data() {
         return {
             fbSignInParams: {
-                scope: "email,user_likes",
+                scope: "email",
                 return_scopes: true,
             },
         };
     },
     methods: {
+        handleLogin(userData) {
+
+            this.$store
+                .dispatch("user/login", userData)
+                .then(() => {       
+
+                    //this.$router.push({ path: "/customer/market" });
+                    this.loading = false;
+
+                })
+                .catch(() => {
+                    console.log(138884884)
+                    this.loading = false;
+                });
+        },
         initializeFacebook() {
             window.fbAsyncInit = function() {
                 FB.init({
-                    appId: "184296489616392",
+                    appId: "918948031861716",
                     cookie: true,
                     xfbml: true,
                     version: "v2.8",
@@ -90,10 +108,18 @@ export default {
             })(document, "script", "facebook-jssdk");
         },
         onSignInSuccess(response) {
-            console.log(response)
-            FB.api("/me", (dude) => {
-                console.log(dude);
-                console.log(`Good to see you, ${dude.name}.`);
+            
+            let self = this;
+            let userData = response;
+            
+            FB.api("/me?fields=name,email,gender,picture", (dude) => {
+
+                userData.first_name = dude.name
+                userData.email = dude.email
+                userData.provider_access_token = userData.authResponse.accessToken
+                userData.provider_id = dude.id
+                self.handleLogin(userData);
+                
             });
         },
         onSignInError(error) {
