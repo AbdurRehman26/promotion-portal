@@ -17,7 +17,7 @@ export default {
         FadeTransition,
     },
     mounted() {
-        // this.getUser();
+        this.getUser();
     },
     methods: {
         async getUser() {

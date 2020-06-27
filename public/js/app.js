@@ -2060,7 +2060,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   components: {
     FadeTransition: vue2_transitions__WEBPACK_IMPORTED_MODULE_1__["FadeTransition"]
   },
-  mounted: function mounted() {// this.getUser();
+  mounted: function mounted() {
+    this.getUser();
   },
   methods: {
     getUser: function () {
@@ -4732,6 +4733,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4768,7 +4776,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["user"])),
   data: function data() {
     return {
       activeNotifications: false,
@@ -5310,6 +5320,7 @@ __webpack_require__.r(__webpack_exports__);
       var userData = response;
       FB.api("/me?fields=name,email,gender,picture", function (dude) {
         userData.first_name = dude.name;
+        userData.image = dude.picture.data.url;
         userData.email = dude.email;
         userData.provider_access_token = userData.authResponse.accessToken;
         userData.provider_id = dude.id;
@@ -5333,6 +5344,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -5403,7 +5421,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["user"])),
+  mounted: function mounted() {
+    console.log(this);
+  },
+  data: function data() {
+    return {};
+  },
+  methods: {}
+});
 
 /***/ }),
 
@@ -67356,7 +67425,7 @@ var render = function() {
                           _c("img", {
                             attrs: {
                               alt: "Image placeholder",
-                              src: "img/theme/team-4-800x800.jpg"
+                              src: _vm.user.image
                             }
                           })
                         ]
@@ -67369,7 +67438,7 @@ var render = function() {
                           _c(
                             "span",
                             { staticClass: "mb-0 text-sm  font-weight-bold" },
-                            [_vm._v("Jessica Jones")]
+                            [_vm._v(_vm._s(_vm.user.first_name))]
                           )
                         ]
                       )
@@ -68188,7 +68257,8 @@ var render = function() {
                               name: "lazy",
                               rawName: "v-lazy",
                               value: "img/theme/team-4-800x800.jpg",
-                              expression: "'img/theme/team-4-800x800.jpg'"
+                              expression:
+                                "\n                                            'img/theme/team-4-800x800.jpg'\n                                        "
                             }
                           ],
                           staticClass: "rounded-circle"
@@ -68265,7 +68335,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("span", { staticClass: "description" }, [
-                            _vm._v("Comments")
+                            _vm._v("Commesdsadasnts")
                           ])
                         ])
                       ]
@@ -68275,7 +68345,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "text-center mt-5" }, [
                   _c("h3", [
-                    _vm._v("Jessica Jones\n                            "),
+                    _vm._v(
+                      "\n                            Jessica Jones\n                            "
+                    ),
                     _c("span", { staticClass: "font-weight-light" }, [
                       _vm._v(", 27")
                     ])
@@ -68283,17 +68355,23 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "h6 font-weight-300" }, [
                     _c("i", { staticClass: "ni location_pin mr-2" }),
-                    _vm._v("Bucharest, Romania")
+                    _vm._v(
+                      "Bucharest,\n                            Romania\n                        "
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "h6 mt-4" }, [
                     _c("i", { staticClass: "ni business_briefcase-24 mr-2" }),
-                    _vm._v("Solution Manager - Creative Tim Officer")
+                    _vm._v(
+                      "Solution Manager - Creative Tim Officer\n                        "
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", [
                     _c("i", { staticClass: "ni education_hat mr-2" }),
-                    _vm._v("University of Computer Science")
+                    _vm._v(
+                      "University\n                            of Computer Science\n                        "
+                    )
                   ])
                 ]),
                 _vm._v(" "),
@@ -68302,12 +68380,17 @@ var render = function() {
                     _c("div", { staticClass: "col-lg-9" }, [
                       _c("p", [
                         _vm._v(
-                          "An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range."
+                          "\n                                    An artist of considerable range, Ryan —\n                                    the name taken by Melbourne-raised,\n                                    Brooklyn-based Nick Murphy — writes,\n                                    performs and records all of his own\n                                    music, giving it a warm, intimate feel\n                                    with a solid groove structure. An artist\n                                    of considerable range.\n                                "
                         )
                       ]),
                       _vm._v(" "),
                       _c("a", { attrs: { href: "#" } }, [_vm._v("Show more")])
-                    ])
+                    ]),
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.user) +
+                        "\n                        "
+                    )
                   ])
                 ])
               ])
@@ -85181,7 +85264,7 @@ function signUp(data) {
 }
 function getInfo(token) {
   return Object(_utils_request__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    url: '/api/user',
+    url: '/api/me',
     method: 'get'
   });
 }
@@ -88828,7 +88911,7 @@ var getters = {
     return state.permission.addRoutes;
   },
   user: function user(state) {
-    return state.user;
+    return JSON.parse(state.user.user);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (getters);

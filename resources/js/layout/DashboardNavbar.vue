@@ -8,10 +8,10 @@
                 <base-dropdown class="nav-link pr-0">
                     <div class="media align-items-center" slot="title">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" :src="user.image">
                 </span>
                         <div class="media-body ml-2 d-none d-lg-block">
-                            <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                            <span class="mb-0 text-sm  font-weight-bold">{{user.first_name}}</span>
                         </div>
                     </div>
 
@@ -35,7 +35,13 @@
     </base-nav>
 </template>
 <script>
+
+import { mapGetters } from "vuex";
+
   export default {
+    computed: {
+        ...mapGetters(["user"]),
+    },
     data() {
       return {
         activeNotifications: false,

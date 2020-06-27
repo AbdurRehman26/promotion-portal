@@ -18,7 +18,7 @@ export function signUp(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/api/user',
+    url: '/api/me',
     method: 'get',
   });
 }

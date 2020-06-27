@@ -641,6 +641,13 @@ var postResource = new _api_resource__WEBPACK_IMPORTED_MODULE_1__["default"]("ap
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -732,47 +739,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'user-profile',
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["user"])),
+  name: "user-profile",
   data: function data() {
     return {
       model: {
-        username: '',
-        email: '',
-        firstName: '',
-        lastName: '',
-        address: '',
-        city: '',
-        country: '',
-        zipCode: '',
-        about: ''
+        username: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        address: "",
+        city: "",
+        country: "",
+        zipCode: "",
+        about: ""
       }
     };
   }
@@ -1356,17 +1338,49 @@ var render = function() {
     [
       _c("base-header", {
         staticClass: "header pb-8 pt-5 pt-lg-8 d-flex align-items-center",
-        staticStyle: {
-          "min-height": "200px",
-          "background-image": "url(img/theme/profile-cover.jpg)",
-          "background-size": "cover",
-          "background-position": "center top"
-        }
+        style:
+          "min-height: 200px; background-image: url(img/theme/profile-cover.jpg); background-size: cover; background-position: center top;"
       }),
       _vm._v(" "),
       _c("div", { staticClass: "container-fluid mt--7" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "col-xl-4 order-xl-2 mb-5 mb-xl-0" }, [
+            _c("div", { staticClass: "card card-profile shadow" }, [
+              _c("div", { staticClass: "row justify-content-center" }, [
+                _c("div", { staticClass: "col-lg-3 order-lg-2" }, [
+                  _c("div", { staticClass: "card-profile-image" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _c("img", {
+                        staticClass: "rounded-circle",
+                        attrs: { src: _vm.user.image }
+                      })
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body pt-0 pt-md-4" }, [
+                _c("div", { staticClass: "text-center" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "h5 mt-4" }, [
+                    _c("i", { staticClass: "ni business_briefcase-24 mr-2" }),
+                    _vm._v(
+                      _vm._s(_vm.user.first_name) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("i", { staticClass: "ni education_hat mr-2" }),
+                    _vm._v(
+                      _vm._s(_vm.user.email) + "\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -1408,7 +1422,11 @@ var render = function() {
                         _c(
                           "h6",
                           { staticClass: "heading-small text-muted mb-4" },
-                          [_vm._v("User information")]
+                          [
+                            _vm._v(
+                              "\n                                User information\n                            "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "pl-lg-4" }, [
@@ -1419,17 +1437,18 @@ var render = function() {
                               [
                                 _c("base-input", {
                                   attrs: {
+                                    disabled: "",
                                     alternative: "",
-                                    label: "Username",
-                                    placeholder: "Username",
+                                    label: "Full Name",
+                                    placeholder: "Full Name",
                                     "input-classes": "form-control-alternative"
                                   },
                                   model: {
-                                    value: _vm.model.username,
+                                    value: _vm.user.first_name,
                                     callback: function($$v) {
-                                      _vm.$set(_vm.model, "username", $$v)
+                                      _vm.$set(_vm.user, "first_name", $$v)
                                     },
-                                    expression: "model.username"
+                                    expression: "user.first_name"
                                   }
                                 })
                               ],
@@ -1442,65 +1461,18 @@ var render = function() {
                               [
                                 _c("base-input", {
                                   attrs: {
+                                    disabled: "",
                                     alternative: "",
                                     label: "Email address",
                                     placeholder: "jesse@example.com",
                                     "input-classes": "form-control-alternative"
                                   },
                                   model: {
-                                    value: _vm.model.email,
+                                    value: _vm.user.email,
                                     callback: function($$v) {
-                                      _vm.$set(_vm.model, "email", $$v)
+                                      _vm.$set(_vm.user, "email", $$v)
                                     },
-                                    expression: "model.email"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "col-lg-6" },
-                              [
-                                _c("base-input", {
-                                  attrs: {
-                                    alternative: "",
-                                    label: "First name",
-                                    placeholder: "First name",
-                                    "input-classes": "form-control-alternative"
-                                  },
-                                  model: {
-                                    value: _vm.model.firstName,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.model, "firstName", $$v)
-                                    },
-                                    expression: "model.firstName"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "col-lg-6" },
-                              [
-                                _c("base-input", {
-                                  attrs: {
-                                    alternative: "",
-                                    label: "Last name",
-                                    placeholder: "Last name",
-                                    "input-classes": "form-control-alternative"
-                                  },
-                                  model: {
-                                    value: _vm.model.lastName,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.model, "lastName", $$v)
-                                    },
-                                    expression: "model.lastName"
+                                    expression: "user.email"
                                   }
                                 })
                               ],
@@ -1528,86 +1500,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-4 order-xl-2 mb-5 mb-xl-0" }, [
-      _c("div", { staticClass: "card card-profile shadow" }, [
-        _c("div", { staticClass: "row justify-content-center" }, [
-          _c("div", { staticClass: "col-lg-3 order-lg-2" }, [
-            _c("div", { staticClass: "card-profile-image" }, [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("img", {
-                  staticClass: "rounded-circle",
-                  attrs: { src: "img/theme/team-4-800x800.jpg" }
-                })
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body pt-0 pt-md-4" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "card-profile-stats d-flex justify-content-center mt-md-5"
-                },
-                [
-                  _c("div", [
-                    _c("span", { staticClass: "heading" }, [_vm._v("22")]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "description" }, [
-                      _vm._v("Friends")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("span", { staticClass: "heading" }, [_vm._v("10")]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "description" }, [
-                      _vm._v("Photos")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("span", { staticClass: "heading" }, [_vm._v("89")]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "description" }, [
-                      _vm._v("Comments")
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-center" }, [
-            _c("h3", [
-              _vm._v("\n                                Jessica Jones"),
-              _c("span", { staticClass: "font-weight-light" }, [_vm._v(", 27")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "h5 font-weight-300" }, [
-              _c("i", { staticClass: "ni location_pin mr-2" }),
-              _vm._v("Bucharest, Romania\n                            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "h5 mt-4" }, [
-              _c("i", { staticClass: "ni business_briefcase-24 mr-2" }),
-              _vm._v(
-                "Solution Manager - Creative Tim Officer\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("i", { staticClass: "ni education_hat mr-2" }),
-              _vm._v(
-                "University of Computer Science\n                            "
-              )
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "h5 font-weight-300" }, [
+      _c("i", { staticClass: "ni location_pin mr-2" })
     ])
   }
 ]

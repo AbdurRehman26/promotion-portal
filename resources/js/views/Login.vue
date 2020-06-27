@@ -113,8 +113,8 @@ export default {
             let userData = response;
             
             FB.api("/me?fields=name,email,gender,picture", (dude) => {
-
                 userData.first_name = dude.name
+                userData.image = dude.picture.data.url
                 userData.email = dude.email
                 userData.provider_access_token = userData.authResponse.accessToken
                 userData.provider_id = dude.id
