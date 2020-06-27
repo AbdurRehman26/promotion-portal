@@ -23,10 +23,10 @@ class CreateUsersTable extends Migration {
 			$table->string('provider_id')->nullable();
 			$table->string('provider')->nullable();
 			$table->string('expires_in')->nullable();
-			$table->timestamps();
-			$table->softDeletes();
 			$table->text('image', 65535)->nullable();
 			$table->string('remember_token', 100)->nullable();
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

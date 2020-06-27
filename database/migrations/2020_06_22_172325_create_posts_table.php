@@ -20,9 +20,12 @@ class CreatePostsTable extends Migration {
 			$table->bigInteger('user_id')->unsigned()->nullable();
 			$table->bigInteger('approved_by')->unsigned()->nullable();
 			$table->text('posted_link', 65535)->nullable();
+			$table->text('rejection_reason', 65535)->nullable();
 			$table->text('posted_for', 65535)->nullable();
 			$table->integer('audience_count_id')->unsigned()->nullable();
 			$table->string('status', 45)->nullable();
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

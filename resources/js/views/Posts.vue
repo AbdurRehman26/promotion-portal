@@ -17,34 +17,84 @@
         body-classes="p-0"
         modal-classes="modal-dialog-centered modal-lg"
       >
-
-        <create-post></create-post>
+  
+        <create-post :audiences="audiences"></create-post>
 
       </modal>
     </div>
   </div>
 </template>
+
+
+
 <script>
-import PostsTable from "./Tables/PostsTable";
-import CreatePost from "../components/Posts/CreatePost";
+import CreatePost from '../components/Posts/CreatePost.vue'
+import PostsTable from './Tables/PostsTable.vue'
+import Resource from "@/api/resource";
+const audienceResource = new Resource("api/audience-count");
+
 export default {
-  methods: {
-    showModal() {
-      this.modals.modal3 = true;
-    },
+  components: {
+    CreatePost,
+    PostsTable,
   },
+  /*
+        |--------------------------------------------------------------------------
+        | Component > props
+        |--------------------------------------------------------------------------
+        */
+  props: {}, // End of Component > props
+  /*
+        |--------------------------------------------------------------------------
+        | Component > data
+        |--------------------------------------------------------------------------
+        */
   data() {
     return {
       modals: {
         modal3: false,
       },
+      audiences: [],
+      showCreate: false,
+      loading: false,
+      items: []
     };
-  },
-  name: "tables",
-  components: {
-    CreatePost,
-    PostsTable,
-  },
-};
+  }, // End of Component > data
+  /*
+        |--------------------------------------------------------------------------
+        | Component > computed
+        |--------------------------------------------------------------------------
+        */
+  computed: {}, // End of Component > computed
+  /*
+        |--------------------------------------------------------------------------
+        | Component > methods
+        |--------------------------------------------------------------------------
+        */
+  methods: {
+    showModal() {
+      this.modals.modal3 = true;
+    },
+    async getAudienceData() {
+      this.audiences = [];
+
+      const response = await audienceResource.list({
+        market_id: this.$route.params.id,
+      });
+
+      this.audiences = response.data;
+
+      this.isLoading = false;
+    },
+  }, // End of Component > methods
+  /*
+        |--------------------------------------------------------------------------
+        | Component > mounted
+        |--------------------------------------------------------------------------
+        */
+  mounted() {
+    this.getAudienceData();
+  }, // End of Component > mounted
+  watch: {},
+}; // End of export default
 </script>
-<style></style>

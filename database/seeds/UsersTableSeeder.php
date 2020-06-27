@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
 		0 => 
 		array (
 		    'id' => 1,
-		    'name' => 'Kazmi',
+		    'first_name' => 'Kazmi',
 		    'email' => 'sydabdrehman@gmail.com',
 		    'password' => bcrypt('sydabdrehman@gmail.com'),
 		    'remember_token' => 'F8poPGkbyqQVMea9HiKE4BfERh1RRdvb4pvyL9nUEkQTAuTqHdEqe1xPOwSf',

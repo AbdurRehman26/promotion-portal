@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Data\Repositories\PostRepository;
+use App\Data\Repositories\AudienceCountRepository;
 use Kazmi\Http\Controllers\ApiResourceController;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 
 
-class PostController extends ApiResourceController{
+class AudienceCountController extends ApiResourceController{
     
     public $_repository;
 
-    public function __construct(PostRepository $repository){
+    public function __construct(AudienceCountRepository $repository){
         $this->_repository = $repository;
     }
 
@@ -54,7 +54,9 @@ class PostController extends ApiResourceController{
     }
 
     public function input($value=''){
-        $input = request()->only('id', 'image', 'link', 'audience_count_id', 'pagination');
+        
+        $input = request()->only('id');
+        
         return $input;
     }
 }

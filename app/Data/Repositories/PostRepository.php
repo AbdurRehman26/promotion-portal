@@ -40,4 +40,45 @@ class PostRepository extends AbstractRepository implements RepositoryContract
         $this->builder = $model;
 
     }
+
+
+    /**
+     *
+     * This method will fetch single model
+     * and will return output back to client as json
+     *
+     * @access public
+     * @return mixed
+     *
+     * @author Usaama Effendi <usaamaeffendi@gmail.com>
+     *
+     **/
+    public function findById($id, $refresh = false, $details = false, $encode = true) {
+        
+        $data = parent::findById($id, $refresh, $details, $encode);
+
+        $data->imagePath = $data->image ? url('storage/'.$data->image) : $data->image;
+        $data->audienceCount = app('AudienceCountRepository')->findById($data->audience_count_id);
+
+        return $data;
+    }
+
+
+    /**
+     *
+     * This method will fetch all exsiting models
+     * and will return output back to client as json
+     *
+     * @access public
+     * @return mixed
+     *
+     * @author Usaama Effendi <usaamaeffendi@gmail.com>
+     *
+     **/
+    public function findByAll($pagination = false, $perPage = 10, array $input = [] ) {
+
+        return parent::findByAll($pagination, $perPage, $input);
+    }
+
+
 }

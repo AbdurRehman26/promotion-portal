@@ -20,6 +20,7 @@ class CreateRoleUsersTable extends Migration {
 			$table->string('instance_type');
 			$table->string('type');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

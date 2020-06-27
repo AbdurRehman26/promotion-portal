@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Kazmi\Providers\ResourceCommandServiceProvider::class,
+        App\Providers\AudienceCountRepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...
