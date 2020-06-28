@@ -41,9 +41,12 @@
                   ></upload-file>
                 </div>
                 <div class="col">
-   
-                  <img :src="formData.imagePath" alt="Raised image" class="img-fluid rounded shadow-lg" style="width: 250px;">
-
+                  <img
+                    :src="formData.imagePath"
+                    alt="Raised image"
+                    class="img-fluid rounded shadow-lg"
+                    style="width: 250px;"
+                  />
                 </div>
               </div>
             </div>
@@ -88,7 +91,6 @@ import UploadFile from "../Common/UploadFile";
 import Resource from "@/api/resource";
 const postResource = new Resource("api/post");
 
-
 export default {
   components: {
     UploadFile,
@@ -111,7 +113,7 @@ export default {
         image: "",
         audience_count_id: 1,
         imagePath: "https://via.placeholder.com/250",
-        audience_count_id: 1
+        audience_count_id: 1,
       },
     };
   }, // End of Component > data
@@ -127,18 +129,19 @@ export default {
         |--------------------------------------------------------------------------
         */
   methods: {
-    initializeValues(){
+    initializeValues() {
       this.formData = {
-          link: "",
-          image: "",
-          imagePath: ""
+        link: "",
+        image: "",
+        imagePath: "",
+        audience_count_id: 1
       };
     },
-    async submitPost(){
-
-     const response = await postResource.store(this.formData);
-     this.initializeValues();
-
+    async submitPost() {
+      const response = await postResource.store(this.formData);
+      this.initializeValues();
+      this.$swal("Post Submitted Successfully.");
+      this.$emit("success");
     },
     uploadResponse(response) {
       this.formData.image = response.name;

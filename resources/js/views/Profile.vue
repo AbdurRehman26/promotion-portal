@@ -99,7 +99,6 @@
                                     </p>
                                     <a href="#">Show more</a>
                                 </div>
-                                {{user}}
                             </div>
                         </div>
                     </div>

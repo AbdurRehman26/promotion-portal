@@ -6,6 +6,7 @@
       <div class="row">
         <div class="col">
           <posts-table
+            :reloadList="reloadList"
             @show-modal="showModal"
             title="Submitted Posts"
           ></posts-table>
@@ -18,7 +19,7 @@
         modal-classes="modal-dialog-centered modal-lg"
       >
   
-        <create-post :audiences="audiences"></create-post>
+        <create-post @success="reloadList = !reloadList" :audiences="audiences"></create-post>
 
       </modal>
     </div>
@@ -51,6 +52,7 @@ export default {
         */
   data() {
     return {
+      reloadList: false,
       modals: {
         modal3: false,
       },

@@ -77,6 +77,8 @@ class PostRepository extends AbstractRepository implements RepositoryContract
      **/
     public function findByAll($pagination = false, $perPage = 10, array $input = [] ) {
 
+        $this->builder = $this->model->orderBy('id', 'desc');
+
         return parent::findByAll($pagination, $perPage, $input);
     }
 

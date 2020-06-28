@@ -217,6 +217,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 var postResource = new _api_resource__WEBPACK_IMPORTED_MODULE_2__["default"]("api/post");
@@ -268,7 +271,8 @@ var postResource = new _api_resource__WEBPACK_IMPORTED_MODULE_2__["default"]("ap
       this.formData = {
         link: "",
         image: "",
-        imagePath: ""
+        imagePath: "",
+        audience_count_id: 1
       };
     },
     submitPost: function () {
@@ -284,8 +288,10 @@ var postResource = new _api_resource__WEBPACK_IMPORTED_MODULE_2__["default"]("ap
               case 2:
                 response = _context.sent;
                 this.initializeValues();
+                this.$swal("Post Submitted Successfully.");
+                this.$emit("success");
 
-              case 4:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -367,6 +373,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -392,6 +399,7 @@ var audienceResource = new _api_resource__WEBPACK_IMPORTED_MODULE_3__["default"]
         */
   data: function data() {
     return {
+      reloadList: false,
       modals: {
         modal3: false
       },
@@ -575,6 +583,9 @@ var postResource = new _api_resource__WEBPACK_IMPORTED_MODULE_1__["default"]("ap
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "projects-table",
   props: {
+    reloadList: {
+      type: Boolean
+    },
     type: {
       type: String
     },
@@ -591,6 +602,13 @@ var postResource = new _api_resource__WEBPACK_IMPORTED_MODULE_1__["default"]("ap
     this.getData({
       pagination: true
     });
+  },
+  watch: {
+    reloadList: function reloadList() {
+      this.getData({
+        pagination: true
+      });
+    }
   },
   methods: {
     getData: function () {
@@ -1052,7 +1070,10 @@ var render = function() {
               { staticClass: "col" },
               [
                 _c("posts-table", {
-                  attrs: { title: "Submitted Posts" },
+                  attrs: {
+                    reloadList: _vm.reloadList,
+                    title: "Submitted Posts"
+                  },
                   on: { "show-modal": _vm.showModal }
                 })
               ],
@@ -1074,7 +1095,16 @@ var render = function() {
                 }
               }
             },
-            [_c("create-post", { attrs: { audiences: _vm.audiences } })],
+            [
+              _c("create-post", {
+                attrs: { audiences: _vm.audiences },
+                on: {
+                  success: function($event) {
+                    _vm.reloadList = !_vm.reloadList
+                  }
+                }
+              })
+            ],
             1
           )
         ],

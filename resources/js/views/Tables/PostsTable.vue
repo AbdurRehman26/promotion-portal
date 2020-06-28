@@ -88,6 +88,9 @@ const postResource = new Resource("api/post");
 export default {
   name: "projects-table",
   props: {
+    reloadList: {
+      type: Boolean,
+    },
     type: {
       type: String,
     },
@@ -102,6 +105,11 @@ export default {
   },
   mounted() {
     this.getData({pagination: true});
+  },
+  watch:{
+    reloadList(){
+      this.getData({pagination: true});
+    }
   },
   methods: {
     async getData(query) {
