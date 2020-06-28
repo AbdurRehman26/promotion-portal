@@ -21,7 +21,7 @@ export default {
     },
     methods: {
         async getUser() {
-            this.$store.dispatch("user/getInfo").then(() => {});
+            this.$store.dispatch("auth/getInfo").then(() => {});
         },
     },
 };

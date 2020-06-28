@@ -11,7 +11,7 @@ Router.beforeEach((to, from, next) => {
   } else if (to.matched.some((record) => record.meta.forAuth)) {
     if (!getToken()) {
       next({
-        path: "/",
+        path: "/login",
       });
     } else next();
   } else {

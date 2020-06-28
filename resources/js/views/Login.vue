@@ -72,7 +72,7 @@ export default {
         handleLogin(userData) {
 
             this.$store
-                .dispatch("user/login", userData)
+                .dispatch("auth/login", userData)
                 .then(() => {       
 
                     //this.$router.push({ path: "/customer/market" });

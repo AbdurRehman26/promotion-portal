@@ -2,41 +2,14 @@ import { login, logout, getInfo, signUp } from '@/api/auth';
 import { getToken, setToken, removeToken } from '@/utils/auth';
 import store from '@/store';
 
-const state = {
-  user : '',
-  id: null,
-  token: getToken(),
-  name: '',
-  avatar: '',
-  introduction: '',
-  roles: [],
-  permissions: [],
-};
+const state = {};
 
 const mutations = {
   SET_USER: (state, user) => {
     state.user = JSON.stringify(user);
   },
-  SET_ID: (state, id) => {
-    state.id = id;
-  },
   SET_TOKEN: (state, token) => {
     state.token = token;
-  },
-  SET_INTRODUCTION: (state, introduction) => {
-    state.introduction = introduction;
-  },
-  SET_NAME: (state, name) => {
-    state.name = name;
-  },
-  SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar;
-  },
-  SET_ROLES: (state, roles) => {
-    state.roles = roles;
-  },
-  SET_PERMISSIONS: (state, permissions) => {
-    state.permissions = permissions;
   },
 };
 
@@ -81,7 +54,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token)
         .then(response => {
-
           commit('SET_USER', response);
           resolve(response);
         })

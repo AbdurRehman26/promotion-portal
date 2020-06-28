@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
+import Admin from "./views/Admin.vue";
 import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import Dashboard from "./views/Dashboard.vue";
@@ -42,7 +43,6 @@ export default new Router({
         },
       ],
     },
-
     {
       path: "/login",
       name: "login",
@@ -51,6 +51,17 @@ export default new Router({
       },
       components: {
         default: Login,
+        footer: AppFooter,
+      },
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      meta: {
+        forVisitors: true
+      },
+      components: {
+        default: Admin,
         footer: AppFooter,
       },
     },
